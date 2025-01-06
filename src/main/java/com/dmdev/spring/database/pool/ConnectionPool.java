@@ -1,37 +1,28 @@
 package com.dmdev.spring.database.pool;
 
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import java.util.List;
 import java.util.Map;
 
-public class ConnectionPool implements InitializingBean {
+@Component("pool1")
+public class ConnectionPool {
+
     private final String username;
-    private final Integer pollSize;
-    private final List<Object> args;
-    private Map<String, Object> properties;
+    private final Integer poolSize;
 
-    public ConnectionPool(String username, Integer pollSize, List<Object> args, Map<String, Object> properties) {
+    public ConnectionPool(@Value("${db.username}") String username,
+                          @Value("${db.pool.size}") Integer poolSize) {
         this.username = username;
-        this.pollSize = pollSize;
-        this.args = args;
-        this.properties = properties;
-    }
-
-    public void setProperties(Map<String, Object> properties) {
-        this.properties = properties;
+        this.poolSize = poolSize;
     }
 
     @PostConstruct
     private void init() {
         System.out.println("Init connection pool");
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        System.out.println("Properties set");
     }
 
     @PreDestroy
