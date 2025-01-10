@@ -4,6 +4,10 @@ db:
   driver: PostgresDriver
   url: postgres:5432
   hosts: localhost,127.0.0.1
+  properties:
+    first: 123
+    second: 456
+    third.value: Third
   pool:
     size: 12
     timeout: 10
@@ -17,3 +21,11 @@ db:
 spring:
   profiles:
     active: qa
+
+logging:
+    level:
+      root: warn
+      com.dmdev.spring.database.pool.ConnectionPool: info
+    file:
+      name: dmdev.log
+      path: /
