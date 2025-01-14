@@ -6,7 +6,7 @@ import com.dmdev.spring.database.entity.Company;
 import com.dmdev.spring.database.pool.ConnectionPool;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 
+@Slf4j
 @Transaction
 @Auditing
 @Repository
@@ -23,7 +24,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class CompanyRepository implements CrudRepository<Integer, Company> {
 
-    private static final Logger log = org.slf4j.LoggerFactory.getLogger(CompanyRepository.class);
     private final ConnectionPool pool1;
     private final List<ConnectionPool> pools;
     @Value("${db.pool.size}")
