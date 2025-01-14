@@ -15,12 +15,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-
 @Slf4j
-@Transaction
-@Auditing
 @Repository
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
+@Transaction
+@Auditing
 @RequiredArgsConstructor
 public class CompanyRepository implements CrudRepository<Integer, Company> {
 
@@ -31,12 +30,12 @@ public class CompanyRepository implements CrudRepository<Integer, Company> {
 
     @PostConstruct
     private void init() {
-        log.warn("Init CompanyRepository");
+        log.warn("init company repository");
     }
 
     @Override
     public Optional<Company> findById(Integer id) {
-        log.info("findById method...");
+        System.out.println("findById method...");
         return Optional.of(new Company(id));
     }
 

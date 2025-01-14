@@ -12,5 +12,4 @@ public class EntityListener {
     public void acceptEntityRead(EntityEvent entityEvent) {
         System.out.println("Entity: " + entityEvent);
     }
-
 }

@@ -16,7 +16,9 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 @ExtendWith(MockitoExtension.class)
 class CompanyServiceTest {
@@ -35,7 +37,7 @@ class CompanyServiceTest {
     @Test
     void findById() {
         doReturn(Optional.of(new Company(COMPANY_ID)))
-                .when(companyRepository).findById(COMPANY_ID);
+            .when(companyRepository).findById(COMPANY_ID);
 
         var actualResult = companyService.findById(COMPANY_ID);
 
@@ -48,3 +50,13 @@ class CompanyServiceTest {
         verifyNoMoreInteractions(eventPublisher, userService);
     }
 }
+
+
+
+
+
+
+
+
+
+

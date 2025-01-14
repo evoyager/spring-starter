@@ -12,5 +12,4 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final CrudRepository<Integer, Company> companyRepository;
-
 }

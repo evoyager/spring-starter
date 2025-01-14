@@ -5,7 +5,11 @@ import com.dmdev.spring.database.repository.UserRepository;
 import com.dmdev.web.config.WebConfiguration;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.Scope;
 
 //@ImportResource("classpath:application.xml")
 @Import(WebConfiguration.class)
@@ -25,6 +29,7 @@ public class ApplicationConfiguration {
 
     @Bean
     @Profile("prod|web")
+//    ! & |
     public UserRepository userRepository2(ConnectionPool pool2) {
         return new UserRepository(pool2);
     }
@@ -34,8 +39,19 @@ public class ApplicationConfiguration {
         var connectionPool1 = pool3();
         var connectionPool2 = pool3();
         var connectionPool3 = pool3();
-
         return new UserRepository(pool3());
     }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

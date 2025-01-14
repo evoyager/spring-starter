@@ -19,7 +19,6 @@ public class JpaConfiguration {
 
     @PostConstruct
     void init() {
-        log.info("Jpa Configuration is enabled");
+        log.info("Jpa configuration is enabled");
     }
-
 }

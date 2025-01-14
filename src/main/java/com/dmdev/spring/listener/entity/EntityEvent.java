@@ -13,5 +13,4 @@ public class EntityEvent extends EventObject {
         super(entity);
         this.accessType = accessType;
     }
-
 }
